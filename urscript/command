@@ -1,0 +1,4 @@
+def myprogram():
+	popup("szoveg")
+	movel(p[0.413, -0.25, 0.07, 2.25, -2.25, 0])
+end

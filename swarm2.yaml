@@ -1,0 +1,30 @@
+version: '3.7' 
+
+networks:
+  robotnet:
+    driver: overlay
+
+services:
+  tester:
+    image: alpine
+    stdin_open: true
+    tty: true
+    networks:
+      - robotnet
+  logic:      
+    image: localhost:5000/logic
+    ports:
+      - "4321:4321"
+    networks:
+      - robotnet
+  monitor:
+    image: localhost:5000/monitor
+    ports:
+      - "5432:5432"
+    networks:
+      - robotnet
+  control:
+    image: localhost:5000/control
+    networks:
+      - robotnet
+  

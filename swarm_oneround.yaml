@@ -1,0 +1,30 @@
+version: '3.7' 
+
+networks:
+  robotnet:
+    driver: overlay
+
+services:
+  tester:
+    image: ubuntu:bionic
+    stdin_open: true
+    tty: true
+    networks:
+      - robotnet
+  logic:      
+    image: logic_oneround
+    ports:
+      - "4321:4321"
+    networks:
+      - robotnet
+  monitor:
+    image: monitor
+    ports:
+      - "5432:5432"
+    networks:
+      - robotnet
+  control:
+    image: control
+    networks:
+      - robotnet
+  
